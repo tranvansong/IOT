@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+    <main class="container">
+        <div class="banner-title">
+            <div class="title">
+                Quản lý đăng nhập
+            </div>
+            <div class="title-detail">
+                Đăng nhập để kết nối vào hệ thống báo cháy
+            </div>
+        </div>
+        <div class="login-form-container">
+        	<p th:if=${error} class="error" th:text=${error}></p>
+        	<p th:if=${logout} class="error" th:text=${logout}></p>
+            <form th:action="@{/checkLogin}" class="login-form" method="post">
+                <input type="text" placeholder="Username" name="username" required="required">
+                <input type="password" placeholder="Password" name="password" required="required">
+                <button type="submit" class="btn-login">Login</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

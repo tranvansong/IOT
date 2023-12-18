@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+</head>
+<body>
+    <main class="container">
+        <div class="nav-bar">
+            <div class="title-bar">
+                Admin
+            </div>
+            <div class="menu">
+                <a th:href="@{/dashboard}" class="item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Điều khiển</span>
+                </a>
+                <a th:href="@{/alert-history}" class="item">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Lịch sử cảnh báo</span>
+                </a>
+                <a th:href="@{/logout}" class="item">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Đăng xuất</span>
+                </a>
+            </div>
+        </div>
+        <div class="control-part">
+            <div class="title-control">
+                <div class="title-app">
+                    Hệ thống cảnh báo cháy tự động
+                </div>
+                <div class="admin-name-text">
+                    <span th:text=${admin.username}></span>
+                </div>
+            </div>
+
+            <div class="board-control">
+                <div class="board-item">
+                    <div class="title-sensor title-flame">
+                        <p class="sensor-name">Cảm biến lửa</p>
+                        <p>Trạng thái: <span id="flame-status">An toàn</span></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+                </div>
+
+                <div class="board-item">
+                    <div class="title-sensor title-gas">
+                        <p class="sensor-name">Cảm biến khói và khí gas</p>
+                        <p>Nồng độ khói: <span id="gas-status">123</span></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-solid fa-gas-pump"></i>
+                    </div>
+                </div>
+
+                <div class="board-item pump-control">
+                    <div class="title-sensor">
+                        <p class="sensor-name">Hệ thống nước</p>
+                        <p>Trạng thái: <span id="pump-status">Tắt</span></p>
+                    </div>
+                    <div class="icon icon-pump-container">
+                        <i class="fa-solid fa-droplet"></i><br>
+                        <span>Nước</span>
+                    </div>
+                </div>
+
+                <div class="board-item">
+                    <div class="title-sensor">
+                        <p class="sensor-name">Chuông cảnh báo</p>
+                        <p>Trạng thái: <span id="buzzer-status">Tắt</span></p>
+                    </div>
+                    <div class="icon icon-buzzer-container">
+                        <i class="buzzer-on fa-solid fa-volume-high" style="display: none;"></i>
+                        <i class="buzzer-off fa-solid fa-volume-xmark"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/5e2f0ecaae.js" crossorigin="anonymous"></script>
+    <!-- Thêm thư viện SockJS và STOMP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script th:src="@{/js/main.js}"></script>
+    
+</body>
+</html>
